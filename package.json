@@ -1,0 +1,24 @@
+{
+  "name": "pt-conf",
+  "version": "1.0.0",
+  "description": "scheduler- pt conference",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Advanced-Education/pt-conf.git"
+  },
+  "author": "Advanced Education",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Advanced-Education/pt-conf/issues"
+  },
+  "homepage": "https://github.com/Advanced-Education/pt-conf#readme",
+  "devDependencies": {
+    "express": "^4.18.1",
+    "react": "^18.2.0",
+    "react-redux": "^8.0.2"
+  }
+}
