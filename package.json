@@ -4,7 +4,8 @@
   "description": "scheduler- pt conference",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "start": "./client/index.js"
   },
   "repository": {
     "type": "git",
