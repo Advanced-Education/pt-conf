@@ -4,7 +4,8 @@
   "description": "scheduler- pt conference",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "start": "./client/index.js"
   },
   "repository": {
     "type": "git",
@@ -17,7 +18,9 @@
   },
   "homepage": "https://github.com/Advanced-Education/pt-conf#readme",
   "devDependencies": {
+    "@reduxjs/toolkit": "^1.8.5",
     "express": "^4.18.1",
+    "nodemon": "^2.0.19",
     "react": "^18.2.0",
     "react-redux": "^8.0.2"
   }
