@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Box, Typography } from '@mui/material/';
 import Login from '../components/Login';
-
+import Signup from '../components/Signup';
 class HomeContainer extends Component {
   constructor() {
     super();
@@ -20,6 +20,7 @@ class HomeContainer extends Component {
           </Typography>
         </Box>
         <Login/>
+        <Signup/>
       </div>
     );
   }
