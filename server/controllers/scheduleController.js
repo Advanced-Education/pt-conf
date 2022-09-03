@@ -3,7 +3,7 @@ const { isValidObjectId } = require('mongoose');
 
 const scheduleController = {
 
-  controller1(req, res, next) {
+  idAuthentication(req, res, next) {
 
   
   },
