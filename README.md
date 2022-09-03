@@ -5,3 +5,4 @@ Scheduler - PTA Conference
 - Luis Navarro
 - Michael Lam
 - Serena Amos
+- Anshuman Sinha
