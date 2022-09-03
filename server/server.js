@@ -19,19 +19,19 @@ const scheduleRouter = express.Router();
 // app.use('/', scheduleRouter);
 
 //------------------------get requests to send info to front end
-app.get('/',(req,res)=>{
-  return res.status(200).sendFile(path.join(__dirname,'/client/index.html'));
-});
-  
-  
-app.get('/styles',(req,res) => {
-  return res.status(200).sendFile(path.join(__dirname,'../stylesheets/style.scss'));
+app.get('/', (req, res) => {
+  return res.status(200).sendFile(path.join(__dirname, '/client/index.html'));
 });
 
-app.get('/dist/bundle',(req,res) => {
-  return res.status(200).sendFile(path.join(__dirname,'/dist/bundle.js'));
+app.get('/stylesheets/styles.scss', (req, res) => {
+  return res
+    .status(200)
+    .sendFile(path.join(__dirname, '../stylesheets/style.scss'));
 });
 
+app.get('/dist/bundle.js', (req, res) => {
+  return res.status(200).sendFile(path.join(__dirname, '/dist/bundle.js'));
+});
 
 
 // // http://localhost:3000/controller1
