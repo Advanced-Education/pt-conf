@@ -19,6 +19,7 @@ const scheduleRouter = express.Router();
 // app.use('/', scheduleRouter);
 
 //------------------------get requests to send info to front end
+
 app.get('/',(req,res)=>{
   return res.status(200).sendFile(path.join(__dirname,'../client/index.html'));
 });
@@ -26,11 +27,13 @@ app.get('/',(req,res)=>{
     
 app.get('/stylesheets/style.scss',(req,res) => {
   return res.status(200).sendFile(path.join(__dirname,'../stylesheets/style.scss'));
+
 });
 
 app.get('/dist/bundle.js',(req,res) => {
   return res.status(200).sendFile(path.join(__dirname,'../dist/bundle.js'));
 });
+
 
 
 scheduleRouter.get('/frontPage', (req,res) =>{
@@ -42,6 +45,7 @@ scheduleRouter.get('/frontPage', (req,res) =>{
 scheduleRouter.post('/login', scheduleController.controller1,(req,res)=>{
 
   return res.redirect('/frontPage');
+
 });
 
 
