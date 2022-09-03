@@ -1,11 +1,12 @@
 const { isValidObjectId } = require('mongoose');
-//const schedule = require('./models/scheduleModel');
+const { ParentUse } = require('./models/parentModel.js');
+const student = require('./models/studentModel.js');
+const teacher = require('./models/teacherModel.js');
 
 const scheduleController = {
 
   idAuthentication(req, res, next) {
 
-  
   },
 
 
