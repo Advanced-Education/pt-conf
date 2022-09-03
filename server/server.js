@@ -20,7 +20,7 @@ const scheduleRouter = express.Router();
 
 //------------------------get requests to send info to front end
 app.get('/', (req, res) => {
-  return res.status(200).sendFile(path.join(__dirname, '/client/index.html'));
+  return res.status(200).sendFile(path.join(__dirname, '../client/index.html'));
 });
 
 app.get('/stylesheets/styles.scss', (req, res) => {
@@ -30,7 +30,7 @@ app.get('/stylesheets/styles.scss', (req, res) => {
 });
 
 app.get('/dist/bundle.js', (req, res) => {
-  return res.status(200).sendFile(path.join(__dirname, '/dist/bundle.js'));
+  return res.status(200).sendFile(path.join(__dirname, '../dist/bundle.js'));
 });
 
 
