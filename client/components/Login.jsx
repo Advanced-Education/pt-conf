@@ -7,7 +7,7 @@ class Login extends Component {
     super();
   }
   render() {
-    return (
+    if (this.props.show) return (
       <Box
         sx={{
           marginTop: 4,

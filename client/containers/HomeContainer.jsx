@@ -7,6 +7,7 @@ class HomeContainer extends Component {
     super();
   }
   render() {
+    const { login, signup } = this.props; // ML is this not necessart with RTK?
     return (
       <div id="home-container">
         <Box sx={{
@@ -19,8 +20,8 @@ class HomeContainer extends Component {
             Welcome to Parent Teacher Conferences
           </Typography>
         </Box>
-        <Login/>
-        <Signup/>
+        <Login show={login}/>
+        <Signup show={signup}/>
       </div>
     );
   }
