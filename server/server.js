@@ -7,7 +7,7 @@ const PORT = 3000;
 app.use(express.json());
 
 app.get('/', (req, res) => {
-  return res.status(200).sendFile(path.join(__dirname, '/client/index.html'));
+  return res.status(200).sendFile(path.join(__dirname, '../client/index.html'));
 });
 
 app.get('/stylesheets/styles.scss', (req, res) => {
@@ -17,7 +17,7 @@ app.get('/stylesheets/styles.scss', (req, res) => {
 });
 
 app.get('/dist/bundle.js', (req, res) => {
-  return res.status(200).sendFile(path.join(__dirname, '/dist/bundle.js'));
+  return res.status(200).sendFile(path.join(__dirname, '../dist/bundle.js'));
 });
 
 app.listen(PORT, () => console.log(`Listening on PORT: ${PORT}`));
