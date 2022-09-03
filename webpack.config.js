@@ -4,10 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 const config = {
-  entry: [
-    'react-hot-loader/patch',
-    './src/index.js'
-  ],
+  entry: './client/index.js',
   devtool: 'inline-source-map',
   output: {
     path: path.join(__dirname, 'dist'),
@@ -17,7 +14,12 @@ const config = {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        use: 'babel-loader',
+        use: {
+          loader: 'babel-loader',
+          options:{
+            presets: ['@babel/preset-env', '@babel/preset-react']
+          }
+        },
         exclude: /node_modules/
       },
       {
@@ -72,13 +74,8 @@ const config = {
       },
     },
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      templateContent: ({ htmlWebpackPlugin }) => '<!DOCTYPE html><html><head><meta charset=\"utf-8\"><title>' + htmlWebpackPlugin.options.title + '</title></head><body><div id=\"app\"></div></body></html>',
-      filename: 'index.html',
-    }),
-    new LodashModuleReplacementPlugin
-  ]
+  resolve: { extensions: ['*', '.js', '.jsx'] },
+  plugins: [new HtmlWebpackPlugin({ template: './client/index.html' })],
 };
 
 module.exports = config;
