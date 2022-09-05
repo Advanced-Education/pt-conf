@@ -12,18 +12,23 @@ import { useSelector, useDispatch } from 'react-redux';
 import { submit, handleChange } from '../reducers/scheduleReducers';
 
 export const MainContainer = (props) => {
-  const studentName = useSelector((state) => state.studentName);
-  const teacherData = useSelector((state) => state.teacherData);
-  const { name, availabilty } = teacherData;
-  const teacherName = name;
-  const availability = useSelector(
-    (state) => state.teacherData[0].availability
+  const studentName = useSelector((state) => state.schedule.studentName);
+  const appointmentTime = useSelector(
+    (state) => state.schedule.appointmentTime
   );
+  const teacherData = useSelector((state) => state.schedule.teacherData[0]);
+  const { name, availability } = teacherData;
+  const teacherName = name;
   const dispatch = useDispatch();
 
   const availabilityOptions = [];
-  availability.forEach((time) => {
-    availabilityOptions.push(<MenuItem value={time}> {time} </MenuItem>);
+  availability.forEach((time, i) => {
+    availabilityOptions.push(
+      <MenuItem key={`Time Option ${i}`} value={time}>
+        {' '}
+        {time}{' '}
+      </MenuItem>
+    );
   });
 
   return (
@@ -70,9 +75,7 @@ export const MainContainer = (props) => {
               autoWidth
               label="Time"
             >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
+              <MenuItem value="None">None</MenuItem>
               {availabilityOptions}
               {/* <MenuItem value="6:00PM - 6:10PM">6:00PM - 6:10PM</MenuItem>
               <MenuItem value="6:10PM - 6:20PM">6:10PM - 6:20PM</MenuItem>
