@@ -39,19 +39,27 @@ export const scheduleSlice = new createSlice({
               ...state.teacherData[i].slice(0, index),
               ...state.teacherData[i].slice(index + 1),
             ];
-          } 
+          }
         }
       }
-
-      axios
-        .post('/update-teacher', { teacherName, appointmentTime, studentName })
-        .catch((err) => {
-          console.log(err);
-        });
+      if (appointmentTime !== 'None') {
+        axios
+          .post('/update-teacher', {
+            teacherName,
+            appointmentTime,
+            studentName,
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+    },
+    logout: (state, action) => {
+      //SA not sure how to perform this action with clearing cookies etc
     },
   },
 });
 
-export const { handleChange, submit } = scheduleSlice.actions;
+export const { handleChange, submit, logout } = scheduleSlice.actions;
 
 export default scheduleSlice.reducer;
