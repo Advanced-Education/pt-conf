@@ -9,7 +9,9 @@ export const MainContainer = (props) => {
   const teacherData = useSelector((state) => state.schedule.teacherData);
   const teacherAppointmentSelectors = [];
   teacherData.forEach((teacher, i) => {
-    teacherAppointmentSelectors.push(<AppointmentSelectorDisplay key={`teacher ${i}`} {...teacher}/>);
+    teacherAppointmentSelectors.push(
+      <AppointmentSelectorDisplay key={`teacher ${i}`} {...teacher} />
+    );
   });
 
   return (
@@ -30,8 +32,8 @@ export const MainContainer = (props) => {
         <SchoolIcon fontSize="large" />
       </Avatar>
       <Typography variant="h5" component="h2">
-        Please schedule your appointments with {studentName}'s teachers. They
-        look forward to meeting with you!
+        Please schedule your appointments with {`${studentName}'`}s teachers.
+        They look forward to meeting with you!
       </Typography>
       {teacherAppointmentSelectors}
     </Box>
