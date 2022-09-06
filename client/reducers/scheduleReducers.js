@@ -60,9 +60,20 @@ export const scheduleSlice = new createSlice({
       //SA not sure how to perform this action with clearing cookies etc
       state = initialState;
     },
+    loginSuccess: (state, action) => {
+      state.studentName = action.payload.studentName;
+      state.teacherData = [{name: action.payload.teacherData[0], availability: [ 
+        '6:00PM - 6:10pm',
+        '6:10PM - 6:20pm',
+        '6:20PM - 6:30pm',
+        '6:30PM - 6:40pm',
+        '6:40PM - 6:50pm',
+        '6:50PM - 7:00pm',]}];
+      console.log(state.teacherData);
+    }
   },
 });
 
-export const { handleChange, submit, logout } = scheduleSlice.actions;
+export const { handleChange, submit, logout, loginSuccess } = scheduleSlice.actions;
 
 export default scheduleSlice.reducer;

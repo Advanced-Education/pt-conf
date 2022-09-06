@@ -1,10 +1,31 @@
-import React, { Component } from 'react';
-import { Box, Button, Avatar, Link, TextField, Grid } from '@mui/material/';
+import React from 'react';
+import { Box, Button, Avatar, TextField, Grid } from '@mui/material/';
 import SchoolIcon from '@mui/icons-material/School';
+import Error from './Error';
 
 const Signup = (props) =>  {
 
-  const { show, toggleLogin, signup } = props;
+  const { show, showPasswordError, showSignupError, toggleLogin, passwordError, signupError } = props;
+
+  const submitPostRequest = (e) => {
+    if (e.password !== e.confirmPassword) passwordError();
+    else {
+      fetch('/api/parents/singup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: {
+          studentId: e.studentId, 
+          emaiL: e.email, 
+          password: e.password
+        }
+      }).then(res => {
+        if (res.message === 'error') signupError();
+        else 'MLCK redirect';
+      });
+    }
+  };
 
   if (show) return (
     <Box
@@ -18,7 +39,7 @@ const Signup = (props) =>  {
       <Avatar sx={{ width: 80, height: 80, m: 1.8, bgcolor: 'primary.main' }}>
         <SchoolIcon fontSize='large' />
       </Avatar>
-      <Box component="form" onSubmit={signup} noValidate sx={{ mt: 1 }}>
+      <Box component="form" onSubmit={submitPostRequest} noValidate sx={{ mt: 1 }}>
         <TextField
           margin="normal"
           required
@@ -52,6 +73,14 @@ const Signup = (props) =>  {
           label="Confirm Password"
           type="password"
           id="confirm-password"
+        />
+        <Error
+          show={showPasswordError}
+          message="Passwords do not match"
+        />
+        <Error
+          show={showSignupError}
+          message="Incorrect student ID and/or email address"
         />
         <Button
           type="submit"

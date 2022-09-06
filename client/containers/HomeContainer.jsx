@@ -3,7 +3,7 @@ import {Box, Typography } from '@mui/material/';
 import { useSelector, useDispatch } from 'react-redux';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
-import { toggleLogin, toggleSignup } from '../reducers/homepage';
+import { toggleLogin, toggleSignup, loginError, passwordError, signupError } from '../reducers/homepage';
 
 const HomeContainer = (props) => {
   const dispatch = useDispatch();
@@ -20,14 +20,22 @@ const HomeContainer = (props) => {
         </Typography>
       </Box>
       {/* Should I pass props here or further, still dispatch to parent? */}
-      <Login 
-        show={ useSelector((state) => state.homepage.showLogin) }
-        toggleSignup = { () => dispatch(toggleSignup()) }
-      />
-      <Signup 
-        show={ useSelector((state) => state.homepage.showSignup) }
-        toggleLogin = { () => dispatch(toggleLogin()) }
-      />
+      <div id="auth-container">
+        <Login 
+          show={ useSelector((state) => state.homepage.showLogin) }
+          showError={ useSelector((state) => state.homepage.showCredentialsError) }
+          toggleSignup = { () => dispatch(toggleSignup()) }
+          loginError={ () => dispatch(loginError()) }
+        />
+        <Signup 
+          show={ useSelector((state) => state.homepage.showSignup) }
+          showPasswordError={ useSelector((state) => state.homepage.showPasswordError) }
+          showSignupError={ useSelector((state) => state.homepage.showSignupError) }  
+          toggleLogin={ () => dispatch(toggleLogin()) }
+          passwordError={ () => dispatch(passwordError()) }
+          signupError={ () => dispatch(signupError()) }
+        />  
+      </div>
     </div>
   );
 };
