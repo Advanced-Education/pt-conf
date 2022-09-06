@@ -18,7 +18,7 @@ export const homepageSlice = createSlice({
       state.showLogin = true;
       state.showSignup = false;
     },
-    toggleSigup: (state) => {
+    toggleSignup: (state) => {
       state.showLogin = false;
       state.showSignup = true;
     },
@@ -26,6 +26,6 @@ export const homepageSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { toggleLogin, toggleSigup } = homepageSlice.actions;
+export const { toggleLogin, toggleSignup } = homepageSlice.actions;
 
 export default homepageSlice.reducer;
