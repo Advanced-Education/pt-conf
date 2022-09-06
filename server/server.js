@@ -37,9 +37,9 @@ app.get("/dist/bundle.js", (req, res) => {
   return res.status(200).sendFile(path.join(__dirname, "../dist/bundle.js"));
 });
 
-scheduleRouter.get("/frontPage", (req, res) => {
-  res.status(200).json(res.locals.studentInfo);
-});
+// scheduleRouter.get("/frontPage", (req, res) => {
+//   res.status(200).json(res.locals.studentInfo);
+// });
 
 // post requests ----------
 //ERROR PLEASE FIX
@@ -61,11 +61,13 @@ scheduleRouter.post(
 scheduleRouter.post("/teachers", scheduleController.addTeacher);
 
 scheduleRouter.get("/teachers", scheduleController.getTeachers);
-
+scheduleRouter.get("/parents", scheduleController.getParents);
 //Parents Login and Signup
 
 scheduleRouter.post("/parents/signup", scheduleController.parentSignup);
 scheduleRouter.post("/parents/login", scheduleController.parentLogin);
+// scheduleRouter.get("/parents/signup", scheduleController.parentSignup);
+scheduleRouter.get("/parents/login", scheduleController.parentLogin);
 
 //Create new student
 scheduleRouter.post("/students", scheduleController.addStudent);

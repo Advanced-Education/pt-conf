@@ -10,16 +10,16 @@ const passwordComplexity = require("joi-password-complexity");
 const jwt = require("jsonwebtoken");
 
 const parentSchema = new Schema({
-  firstName: { type: String, required: true },
-  lastName: { type: String, required: true },
+  //firstName: { type: String, required: false },
+  //lastName: { type: String, required: false },
   email: { type: String, required: true }, //How can we implement username?
   password: { type: String, required: true },
-  StudentId: { type: String, required: true },
+  studentId: { type: String, required: true },
 });
 //https://www.ibm.com/docs/en/aix/7.2?topic=files-env-file about.ENV
 parentSchema.methods.generateAuthToken = () => {
   const token = jwt.sign({ _id: this._id }, process.env.JWTPRIVATEKEY, {
-    expiresIn: "14d",
+    expiresIn: '14d',
   });
   return token;
 };
@@ -28,11 +28,11 @@ const ParentUser = mongoose.model("parent", parentSchema);
 
 const validate = (data) => {
   const schema = Joi.object({
-    firstName: Joi.string().required().label("First Name"),
-    lastName: Joi.string().required().label("Last Name"),
-    email: Joi.string().email().required().label("email"),
-    password: passwordComplexity().required().label("password"),
-    studentId: Joi.string().required().label("student id"),
+    // firstName: Joi.string().label("First Name"),
+    //lastName: Joi.string().label("Last Name"),
+    email: Joi.string().email().required().label('email'),
+    password: passwordComplexity().required().label('password'),
+    studentId: Joi.string().required().label('student id'),
   });
   //WE HAVE TO CONSOLE.LOG THIS
   return schema.validate(data);
