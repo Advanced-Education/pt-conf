@@ -35,6 +35,7 @@
             "always"
         ],
         "prefer-const": "warn",
-        "no-unused-vars": ["off", { "vars": "local" }] // checks only that locally-declared variables are used but will allow global variables to be unused.
+        "no-unused-vars": ["off", { "vars": "local" }], // checks only that locally-declared variables are used but will allow global variables to be unused.
+        "react/prop-types": "off"
     }
 }
