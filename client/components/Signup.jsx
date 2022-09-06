@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Box, Button, Avatar, Link, TextField, Grid } from '@mui/material/';
+import React from 'react';
+import { Box, Button, Avatar, TextField, Grid } from '@mui/material/';
 import SchoolIcon from '@mui/icons-material/School';
 
 const Signup = (props) =>  {

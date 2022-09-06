@@ -1,10 +1,29 @@
-import React, { Component } from 'react';
-import { Box, Button, Avatar, Link, TextField, Grid } from '@mui/material/';
+import React from 'react';
+import { Box, Button, Avatar, TextField, Grid } from '@mui/material/';
 import SchoolIcon from '@mui/icons-material/School';
 
 const Login = (props) => {
 
-  const { show, toggleSignup, login } = props;
+  const { show, toggleSignup, login, loginError } = props;
+
+  const submitGetRequest = (e) => {
+    if (!e.password || !e.confirmPassword) loginError();
+    else {
+      fetch('ML endpoint', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: {
+          emaiL: e.email, 
+          password: e.password
+        }
+      }).then((res) => { 
+        if (res.message === 'error') loginError();
+        else 'ML redirect';
+      });
+    }
+  };
 
   if (show) return (
     <Box
