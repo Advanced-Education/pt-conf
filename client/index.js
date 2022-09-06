@@ -9,8 +9,9 @@ import SchoolIcon from '@mui/icons-material/School';
 
 import styles from './stylesheets/styles.scss';
 
+const root = ReactDOM.createRoot(document.getElementById('root'));
 
-render(
+root.render(
   <Provider store={store}>
     <AppBar position="static">
       <Toolbar
@@ -34,6 +35,5 @@ render(
       </Toolbar>
     </AppBar>
     <App />
-  </Provider>,
-  document.getElementById('root')
+  </Provider>
 );
