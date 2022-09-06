@@ -4,7 +4,24 @@ import SchoolIcon from '@mui/icons-material/School';
 
 const Signup = (props) =>  {
 
-  const { show, toggleLogin, signup } = props;
+  const { show, toggleLogin, passwordError } = props;
+
+  const submitPostRequest = (e) => {
+    if (e.password !== e.confirmPassword) passwordError();
+    else {
+      fetch('ML endpoint', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: {
+          studentId: e.studentId, 
+          emaiL: e.email, 
+          password: e.password
+        }
+      });
+    }
+  };
 
   if (show) return (
     <Box
@@ -18,7 +35,7 @@ const Signup = (props) =>  {
       <Avatar sx={{ width: 80, height: 80, m: 1.8, bgcolor: 'primary.main' }}>
         <SchoolIcon fontSize='large' />
       </Avatar>
-      <Box component="form" onSubmit={signup} noValidate sx={{ mt: 1 }}>
+      <Box component="form" onSubmit={submitPostRequest} noValidate sx={{ mt: 1 }}>
         <TextField
           margin="normal"
           required

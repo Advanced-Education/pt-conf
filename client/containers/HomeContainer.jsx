@@ -3,7 +3,7 @@ import {Box, Typography } from '@mui/material/';
 import { useSelector, useDispatch } from 'react-redux';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
-import { toggleLogin, toggleSignup } from '../reducers/homepage';
+import { toggleLogin, toggleSignup, passwordError } from '../reducers/homepage';
 
 const HomeContainer = (props) => {
   const dispatch = useDispatch();
@@ -25,8 +25,10 @@ const HomeContainer = (props) => {
         toggleSignup = { () => dispatch(toggleSignup()) }
       />
       <Signup 
+        showError={ useSelector((state) => state.homepage.showError) }
         show={ useSelector((state) => state.homepage.showSignup) }
-        toggleLogin = { () => dispatch(toggleLogin()) }
+        toggleLogin={ () => dispatch(toggleLogin()) }
+        passwordError={ () => dispatch(passwordError()) }
       />
     </div>
   );

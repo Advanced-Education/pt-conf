@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   showLogin: true,
+  showError: false,
   showSignup: false,
   users: 0,
 };
@@ -22,10 +23,14 @@ export const homepageSlice = createSlice({
       state.showLogin = false;
       state.showSignup = true;
     },
-  },
+    passwordError: (state) => {
+      state.showError = true;
+    },
+  }
 });
 
+
 // Action creators are generated for each case reducer function
-export const { toggleLogin, toggleSignup } = homepageSlice.actions;
+export const { toggleLogin, toggleSignup, passwordError } = homepageSlice.actions;
 
 export default homepageSlice.reducer;
