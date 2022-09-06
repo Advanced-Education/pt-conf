@@ -3,9 +3,9 @@ import axios from 'axios';
 
 const initialState = {
   showLogin: true,
-  showCredentialsError: true,
-  showPasswordError: true,
-  showSignupError: true,
+  showCredentialsError: false,
+  showPasswordError: false,
+  showSignupError: false,
   showSignup: false,
   users: 0,
 };
