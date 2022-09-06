@@ -53,7 +53,9 @@ const scheduleController = {
       }
       const user = await ParentUser.findOne({ email: req.body.email });
       if (!user)
-        return res.status(401).send({ message: "Invalid Email or Password" });
+        return res
+          .status(401)
+          .send({ message: "Invalid Email or Password Fine one" });
 
       const validPassword = await bcrypt.compare(
         req.body.password,
