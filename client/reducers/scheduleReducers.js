@@ -33,11 +33,13 @@ export const scheduleSlice = new createSlice({
       for (let i = 0; i < state.teacherData.length; i++) {
         if (state.teacherData[i].name === teacherName) {
           // SA Do we want to keep this if statement to make sure the appointment is still there incase another user selected the same time?
-          if (state.teacherData[i].indexOf(appointmentTime) !== -1) {
-            const index = state.teacherData[i].indexOf(appointmentTime);
-            state.teacherData[i] = [
-              ...state.teacherData[i].slice(0, index),
-              ...state.teacherData[i].slice(index + 1),
+          const currentTeacherData = state.teacherData[i];
+          const availableAppointments = currentTeacherData.availability;
+          if (availableAppointments.indexOf(appointmentTime) !== -1) {
+            const index = availableAppointments.indexOf(appointmentTime);
+            state.teacherData[i].availability = [
+              ...state.teacherData[i].availability.slice(0, index),
+              ...state.teacherData[i].availability.slice(index + 1),
             ];
           }
         }
@@ -56,6 +58,7 @@ export const scheduleSlice = new createSlice({
     },
     logout: (state, action) => {
       //SA not sure how to perform this action with clearing cookies etc
+      state = initialState;
     },
   },
 });

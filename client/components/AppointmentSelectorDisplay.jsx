@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import {
   Box,
   Typography,
@@ -12,6 +13,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { submit, handleChange } from '../reducers/scheduleReducers';
 
 export const AppointmentSelectorDisplay = (props) => {
+  const studentName = useSelector((state) => state.schedule.studentName);
+  const [isActive, setIsActive] = useState(false);
   const appointmentTime = useSelector(
     (state) => state.schedule.appointmentTime
   );
@@ -19,6 +22,7 @@ export const AppointmentSelectorDisplay = (props) => {
   const teacherData = props;
   const { name, availability } = teacherData;
   const teacherName = name;
+  const payload = {studentName, teacherName, appointmentTime};
   const dispatch = useDispatch();
 
   const availabilityOptions = [];
@@ -41,11 +45,14 @@ export const AppointmentSelectorDisplay = (props) => {
         alignItems: 'center',
       }}
     >
+      <Typography variant="p" sx={{ display: isActive ? 'auto' : 'none' }}>
+        Appointment Scheduled from {appointmentTime} with {teacherName}.
+      </Typography>
       <FormControl
         sx={{
           m: 1,
           minWidth: 80,
-          display: 'flex',
+          display: isActive ? 'none' : 'flex',
           flexDirection: 'row',
           justifyContent: 'space-between',
           alignItems: 'center',
@@ -58,7 +65,9 @@ export const AppointmentSelectorDisplay = (props) => {
           labelId="appointment-time-selector"
           id="appointment-time-selector"
           value={appointmentTime}
-          onChange={(event) => dispatch(handleChange(event.target.value))}
+          onChange={(event) => {
+            dispatch(handleChange(event.target.value));
+          }}
           autoWidth
           label="Time"
           sx={{ bgcolor: '#dbeaf9' }}
@@ -71,8 +80,8 @@ export const AppointmentSelectorDisplay = (props) => {
         <Button
           type="submit"
           variant="contained"
-          onClick={(studentName, teacherName, appointmentTime) => {
-            const payload = { studentName, teacherName, appointmentTime };
+          onClick={() => {
+            setIsActive((current) => !current);
             dispatch(submit(payload));
           }}
         >
