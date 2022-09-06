@@ -1,10 +1,11 @@
 import React from 'react';
 import { Box, Button, Avatar, TextField, Grid } from '@mui/material/';
 import SchoolIcon from '@mui/icons-material/School';
+import Error from './Error';
 
 const Signup = (props) =>  {
 
-  const { show, toggleLogin, passwordError } = props;
+  const { show, showPasswordError, showSignupError, toggleLogin, passwordError, signupError } = props;
 
   const submitPostRequest = (e) => {
     if (e.password !== e.confirmPassword) passwordError();
@@ -19,6 +20,9 @@ const Signup = (props) =>  {
           emaiL: e.email, 
           password: e.password
         }
+      }).then(res => {
+        if (res.message === 'error') signupError();
+        else 'ML redirect';
       });
     }
   };
@@ -69,6 +73,14 @@ const Signup = (props) =>  {
           label="Confirm Password"
           type="password"
           id="confirm-password"
+        />
+        <Error
+          show={showPasswordError}
+          message="Passwords do not match"
+        />
+        <Error
+          show={showSignupError}
+          message="Incorrect student ID and/or email address"
         />
         <Button
           type="submit"

@@ -1,10 +1,11 @@
 import React from 'react';
 import { Box, Button, Avatar, TextField, Grid } from '@mui/material/';
 import SchoolIcon from '@mui/icons-material/School';
+import Error from './Error';
 
 const Login = (props) => {
 
-  const { show, toggleSignup, login, loginError } = props;
+  const { show, showError, toggleSignup, loginError } = props;
 
   const submitGetRequest = (e) => {
     if (!e.password || !e.confirmPassword) loginError();
@@ -37,7 +38,7 @@ const Login = (props) => {
       <Avatar sx={{ width: 80, height: 80, m: 1.8, bgcolor: 'primary.main' }}>
         <SchoolIcon fontSize='large' />
       </Avatar>
-      <Box component="form" onSubmit={login} noValidate sx={{ mt: 1 }}>
+      <Box component="form" onSubmit={submitGetRequest} noValidate sx={{ mt: 1 }}>
         <TextField
           margin="normal"
           required
@@ -54,6 +55,10 @@ const Login = (props) => {
           label="Password"
           type="password"
           id="password"
+        />
+        <Error
+          show={showError}
+          message="Incorrect email address and/or password"
         />
         <Button
           type="submit"
