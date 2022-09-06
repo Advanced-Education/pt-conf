@@ -7,7 +7,10 @@ class Login extends Component {
     super();
   }
   render() {
-    if (this.props.show) return (
+
+    const { show, toggleSigup } = this.props;
+
+    if (show) return (
       <Box
         sx={{
           marginTop: 4,
@@ -44,6 +47,9 @@ class Login extends Component {
             sx={{ mt: 3, mb: 2 }}
           >
             Log In
+          </Button>
+          <Button variant="text" onClick={toggleSigup}>
+            {'Don\'t have an account? Sign Up'}
           </Button>
           <Grid container>
             <Grid item>
