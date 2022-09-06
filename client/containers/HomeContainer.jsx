@@ -20,20 +20,22 @@ const HomeContainer = (props) => {
         </Typography>
       </Box>
       {/* Should I pass props here or further, still dispatch to parent? */}
-      <Login 
-        show={ useSelector((state) => state.homepage.showLogin) }
-        showError={ useSelector((state) => state.homepage.showCredentialsError) }
-        toggleSignup = { () => dispatch(toggleSignup()) }
-        loginError={ () => dispatch(loginError()) }
-      />
-      <Signup 
-        show={ useSelector((state) => state.homepage.showSignup) }
-        showPasswordError={ useSelector((state) => state.homepage.showPasswordError) }
-        showSignupError={ useSelector((state) => state.homepage.showSignupError) }  
-        toggleLogin={ () => dispatch(toggleLogin()) }
-        passwordError={ () => dispatch(passwordError()) }
-        signupError={ () => dispatch(signupError()) }
-      />
+      <div id="auth-container">
+        <Login 
+          show={ useSelector((state) => state.homepage.showLogin) }
+          showError={ useSelector((state) => state.homepage.showCredentialsError) }
+          toggleSignup = { () => dispatch(toggleSignup()) }
+          loginError={ () => dispatch(loginError()) }
+        />
+        <Signup 
+          show={ useSelector((state) => state.homepage.showSignup) }
+          showPasswordError={ useSelector((state) => state.homepage.showPasswordError) }
+          showSignupError={ useSelector((state) => state.homepage.showSignupError) }  
+          toggleLogin={ () => dispatch(toggleLogin()) }
+          passwordError={ () => dispatch(passwordError()) }
+          signupError={ () => dispatch(signupError()) }
+        />  
+      </div>
     </div>
   );
 };
