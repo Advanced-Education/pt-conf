@@ -10,7 +10,7 @@ const Signup = (props) =>  {
   const submitPostRequest = (e) => {
     if (e.password !== e.confirmPassword) passwordError();
     else {
-      fetch('ML endpoint', {
+      fetch('/api/parents/singup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -22,7 +22,7 @@ const Signup = (props) =>  {
         }
       }).then(res => {
         if (res.message === 'error') signupError();
-        else 'ML redirect';
+        else 'MLCK redirect';
       });
     }
   };

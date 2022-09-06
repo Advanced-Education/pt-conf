@@ -10,7 +10,7 @@ const Login = (props) => {
   const submitGetRequest = (e) => {
     if (!e.password || !e.confirmPassword) loginError();
     else {
-      fetch('ML endpoint', {
+      fetch('/api/parents/login', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
